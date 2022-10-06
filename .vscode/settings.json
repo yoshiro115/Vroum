@@ -11,6 +11,18 @@
       "driver": "MySQL",
       "name": "Vroum",
       "connectString": "mysql://s1ucrsdroi7j5jmx:x25ewj98ihudrbvy@oliadkuxrl9xdugh.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/myihdzkmzu77bs7y"
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "askForPassword": true,
+      "driver": "MySQL",
+      "name": "Vroum-vincent",
+      "connectString": "mysql://j9qd8pcnovf2oaia:b7hst2525rwotfye@ltnya0pnki2ck9w8.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/j44zu3776di2al2b"
     }
   ]
 }

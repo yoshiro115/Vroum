@@ -13,16 +13,16 @@ BackOffice
 <table class="table table-striped table-hover table-dark text-center">
     <thead class="table-secondary">
         <tr>
-            <th>Membre</th>
-            <th>Véhicule</th>
+            <th style="max-width:10vw;">Membre</th>
+            <th style="max-width:10vw;">Véhicule</th>
             {% for colonne in colonnes %}
                 
                 
-                <th>{{ colonne }}</th>
-                {% endif %}
+                <th style="max-width:10vw;">{{ colonne }}</th>
+                
 
             {% endfor %}
-            <th>Action</th>
+            <th style="max-width:10vw;">Action</th>
         </tr>
     </thead>
     <tbody>
