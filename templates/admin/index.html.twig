@@ -3,18 +3,18 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1 class="text-center mt-5 mb-5">Bienvenue dans le BACKOFFICE</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Vincent/Desktop/projet_symphony/VroumVroum/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Vincent/Desktop/projet_symphony/VroumVroum/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
+<div class="card border-light mb-3" style="max-width: 90vh;">
+  <div class="card-body container">
+    <div class="row">
+        <a class="btn btn-primary col-12 mt-5" href="{{path('admin_vehicules')}}">Administration Vehicules</a>
+        <a class="btn btn-primary col-12  mt-5" href="{{path('admin_membres')}}">Administration Membres</a>
+        <a class="btn btn-primary col-12  mt-5 mb-5" href="{{path('admin_commandes')}}">Administration Commandes</a>
+    </div>
+  </div>
 </div>
+
+
+
 {% endblock %}

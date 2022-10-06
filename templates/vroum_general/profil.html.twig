@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<h1>Mon profil</h1>
+
+<div class="card border-info mx-auto mb-5" style="max-width: 60vw;">
+            <div class="card-header"> <h3>{{app.user.Pseudo}}</h3></div>
+            <div class="card-body container">
+            <div class="row">
+            <h4 class="card-title col-12">Vos informations</h4>
+                <br><hr><br>
+                <h4 class="subtitle col-6">Nom : {{app.user.nom}}</h4>
+                <h4 class="subtitle col-6">Prenom : {{app.user.prenom}}</h4>
+                
+                <h4 class="col-6 subtitle">Email : {{app.user.email}}</h4>
+                <h4 class="col-6 subtitle">Civilité : {{app.user.civilite}}</h4>            
+                
+
+            </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                <div class="col-10"></div>
+                    <div class="col-2"><a href="#" class="btn btn-warning">Modifier son Compte</a></div>
+                </div>
+            </div>
+        </div>
+
+<h2>Mes commandes</h2>
+
+{% for commande in commandes %}
+
+{% if commande.idMembre.id == app.user.id %}
+
+<div class="card border-success mb-3" style="max-width: 80vw;">
+            <div class="card-header"><h3>Commande du {{commande.dateEnregistrement|date("d/m/y à H:i:s")}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idvehicule.titre}}</h4>
+                <p class="card-text">
+                -heure de départ : {{ commande.dateheuredepart|date("d/m/y à H:i:s") }}<br>
+                -heure de retour : {{ commande.dateheurefin|date("d/m/y à H:i:s") }}<br>
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2"><h5>Prix Total : {{ commande.prixtotal }}€</h5></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endif %}
+
+    
+{% endfor %}
+
+
+
+
+
+
+
+
+{% endblock %}

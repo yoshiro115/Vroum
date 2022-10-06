@@ -9,10 +9,13 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class RegistrationFormType extends AbstractType
 {
@@ -59,8 +62,17 @@ class RegistrationFormType extends AbstractType
                     'Femme' => 'femme',
                     'Transegender' => 'transe'
                 ]
+                
             ])
-        ;
+            ->add('roles', ChoiceType::class, [
+                'choices' => [
+                    "Admin" => "ROLE_ADMIN",
+                    
+                ],
+                'expanded' => true,
+                'multiple' => true
+            ])
+            ;
         ;
     }
 

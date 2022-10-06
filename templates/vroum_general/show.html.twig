@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+<div class="card border-light mt-5 mb-3 f-s-4">
+  <h3 class="card-header"> {{ vehicule.titre }} </h3>
+  <h4 class="card-title text-center"> {{ vehicule.marque }}</h4>
+  <div class="card-body text-center">
+    <h5 class="card-title"> Modèle : {{ vehicule.modele }}</h5>
+    <h5 class="card-title"> Prix Journalier {{ vehicule.prixjournalier }} € </h5>
+    <p>  </p>
+  </div>
+  <div class="text-center">
+    <img src="{{ vehicule.photo }}" alt="" width="50%" height="50%">
+  </div>
+  <div class="card-body">
+  <p class="card-header"> Description : </p>
+    <p class="card-text"> {{ vehicule.description }} </p>
+  </div>
+  <div class="card-footer text-muted text-center">
+    (Ecrit le {{ vehicule.dateenregistrement|date("d/m/Y à H:i:s") }})
+  </div>
+</div>
+{% if app.user %}
+{{form_start(form, {
+    attr: {
+        novalidate: 'novalidate'
+    }
+})}}
+
+{{ form_row(form.date_heure_depart) }}
+{# {{ form_row(form.roles) }} #}
+{{ form_row(form.date_heure_fin) }}
+
+
+
+
+
+<button type="submit" class="btn btn-success mt-2">
+Commander
+</button>
+{{form_end(form)}}
+{% else %}
+    <a href="{{path('app_login')}}" class="btn btn-info">se connecter</a>
+{% endif %}
+{% endblock %}

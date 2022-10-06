@@ -1,20 +1,29 @@
+{#Index.html.twig#}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VroumGeneralController!{% endblock %}
+{% block title %} Home {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container mt-4 d-flex justify-content-evenly"> 
+{% for item in vehicules %}
+<div class="card text-white border-light mb-3 mr-4 "
+style="max-width: 20rem; min-width: 20rem;">
+  <div class="card-header text-center"> {{ item.titre }} </div>
+  <div class="card-body text-center">
+    <h4 class="card-title"> {{ item.marque }} / {{ item.modele }}</h4>
+    <img class="text-center" src="{{ item.photo }}" alt="" width="200px">
+    <p class="card-text"> {{ item.description }} </p>
+    <hr>
+    <p>Prix Journalier : {{ item.prixjournalier }} €</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Vincent/Desktop/projet_symphony/VroumVroum/src/Controller/VroumGeneralController.php'|file_link(0) }}">src/Controller/VroumGeneralController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Vincent/Desktop/projet_symphony/VroumVroum/templates/vroum_general/index.html.twig'|file_link(0) }}">templates/vroum_general/index.html.twig</a></code></li>
-    </ul>
+    <a href="{{path('app_vroum_commander', {id: item.id})}}" class="btn btn-success"> Commander</a>
+  </div>
 </div>
+{% endfor %}
+</div>
+
+
 {% endblock %}
+

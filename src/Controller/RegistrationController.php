@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Membre;
+use App\Form\MembreType;
 use App\Form\RegistrationFormType;
 use App\Repository\MembreRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,7 +20,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new Membre();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(MembreType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -37,7 +38,7 @@ class RegistrationController extends AbstractController
             $this->addFlash('success', "Votre compte a bien été créé");
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_vroum_general');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
