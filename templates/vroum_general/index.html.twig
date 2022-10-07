@@ -5,11 +5,17 @@
 {% block title %} Home {% endblock %}
 
 {% block body %}
+<div class="card border-light mt-3 mb-5 ">
+<div class="card-body">
+<h2 class="text-center mt-2 mb-2">Bienvenue {% if app.user %}{{app.user.pseudo}}, une nouvelle location aujourd'hui ?{% else %}
+  jeune entrepreneur {% endif %}</h2>
+  </div>
+  </div>
 
-<div class="container mt-4 d-flex justify-content-evenly"> 
+<div class="container text-center mt-4 card border-primary"style=" min-height: 80vh;"> 
+<div class="row justify-content-between p-4">
 {% for item in vehicules %}
-<div class="card text-white border-light mb-3 mr-4 "
-style="max-width: 20rem; min-width: 20rem;">
+<div class="card text-white col-3 m-4 border-light ">
   <div class="card-header text-center"> {{ item.titre }} </div>
   <div class="card-body text-center">
     <h4 class="card-title"> {{ item.marque }} / {{ item.modele }}</h4>
@@ -21,9 +27,10 @@ style="max-width: 20rem; min-width: 20rem;">
     <a href="{{path('app_vroum_commander', {id: item.id})}}" class="btn btn-success"> Commander</a>
   </div>
 </div>
+
 {% endfor %}
 </div>
-
+</div>
 
 {% endblock %}
 

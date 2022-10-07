@@ -41,19 +41,26 @@ class VroumGeneralController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid())
         { 
-            $table = $globals->request->get("commande_form");
-            $tableOrigin = $table["date_heure_depart"]['date'];
-            $origin = $tableOrigin["year"] . "-" . $tableOrigin["month"] . "-" . $tableOrigin["day"];
-            $origin = date_create($origin);
-            $tableTarget = $table["date_heure_fin"]['date'];
-            $target = $tableTarget["year"] . "-" . $tableTarget["month"] . "-" . $tableTarget["day"];
-            $target = date_create($target);
+            // $table = $globals->request->get("commande_form");
+            // $tableOrigin = $table["date_heure_depart"]['date'];
+            // $origin = $tableOrigin["year"] . "-" . $tableOrigin["month"] . "-" . $tableOrigin["day"];
+            // $origin = date_create($origin);
+            // $tableTarget = $table["date_heure_fin"]['date'];
+            // $target = $tableTarget["year"] . "-" . $tableTarget["month"] . "-" . $tableTarget["day"];
+            // $target = date_create($target);
+            
+            // $interval = date_diff($origin, $target);;
+            // $prix = $vehicule->getPrixJournalier();
+            
+            // $interval = ($interval->d) + ($interval->m) *30 + ($interval->y) *364 ;
+            // $prix = $prix * $interval;
+            $depart = $commande->getDateHeureDepart();
+            $fin = $commande->getDateHeureFin();
+            $interval = $depart->diff($fin);
+            $days = $interval->days;
             $commande->setDateEnregistrement(new \DateTime);
-            $interval = date_diff($origin, $target);;
             $prix = $vehicule->getPrixJournalier();
-            // $interval = $interval->format('d');
-            $interval = ($interval->d) + ($interval->m) *30 + ($interval->y) *364 ;
-            $prix = $prix * $interval;
+            $prix = $prix * $days;
             $commande->setPrixTotal($prix);
             $commande->setIdVehicule($vehicule);
             $commande->setIdMembre($this->getUser());

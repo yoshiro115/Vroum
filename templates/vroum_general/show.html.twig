@@ -8,8 +8,7 @@
   <h4 class="card-title text-center"> {{ vehicule.marque }}</h4>
   <div class="card-body text-center">
     <h5 class="card-title"> Modèle : {{ vehicule.modele }}</h5>
-    <h5 class="card-title"> Prix Journalier {{ vehicule.prixjournalier }} € </h5>
-    <p>  </p>
+    
   </div>
   <div class="text-center">
     <img src="{{ vehicule.photo }}" alt="" width="50%" height="50%">
@@ -18,10 +17,13 @@
   <p class="card-header"> Description : </p>
     <p class="card-text"> {{ vehicule.description }} </p>
   </div>
-  <div class="card-footer text-muted text-center">
+  <div class="container">
+  <div class="row justify-content-between">
+  <div class="card-footer col-3 text-muted text-center">
     (Ecrit le {{ vehicule.dateenregistrement|date("d/m/Y à H:i:s") }})
   </div>
-</div>
+  <h5 class="card-title col-3"> Prix Journalier {{ vehicule.prixjournalier }} € </h5>
+</div></div></div>
 {% if app.user %}
 {{form_start(form, {
     attr: {
